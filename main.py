@@ -31,12 +31,18 @@ class Servo:
           
     def increase_angle(self,angle_step):
         new_angle = self.last_angle_set_perc + angle_step
-        self.set_angle_servo(new_angle,True)
+        if new_angle > 100:
+            self.set_angle_servo(100,True)
+        else:
+            self.set_angle_servo(new_angle,True)
         #print(self.last_angle_set_perc)
         
     def decrease_angle(self,angle_step):
         new_angle = self.last_angle_set_perc - angle_step
-        self.set_angle_servo(new_angle,True)
+        if new_angle < 0:
+            self.set_angle_servo(0,True)
+        else:
+            self.set_angle_servo(new_angle,True)
         #print(self.last_angle_set_perc)
 
 
